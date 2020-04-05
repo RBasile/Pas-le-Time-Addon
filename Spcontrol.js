@@ -37,7 +37,7 @@ function loadVid(urlTrue) {
   if (list.length > 0 || urlTrue) {
     if (document.getElementById('numbtextId') == null) {
       let numb = document.createElement("P");
-      numb.innerHTML = Speed;
+      numb.textContent = Speed;
       numb.className = "numbtext";
       numb.id = "numbtextId";
       numb.style.opacity = 0.3;
@@ -71,13 +71,13 @@ function changeSp(self) {
       for (var i = 0; i < list.length; i++) {
         list[i].playbackRate = 1;
       }
-      numb.innerHTML = 1
+      numb.textContent = 1
       toogle = false;
     } else {
       for (var i = 0; i < list.length; i++) {
         list[i].playbackRate = Speed;
       }
-      numb.innerHTML = Speed.toFixed(1);
+      numb.textContent = Speed.toFixed(1);
       toogle = true;
     }
     
@@ -88,7 +88,7 @@ function changeSp(self) {
     for (var i = 0; i < list.length; i++) {
       list[i].playbackRate += 0.1;
     }
-    numb.innerHTML = list[0].playbackRate.toFixed(1);
+    numb.textContent = list[0].playbackRate.toFixed(1);
     toogle = true;
   }
 
@@ -97,7 +97,7 @@ function changeSp(self) {
     for (var i = 0; i < list.length; i++) {
       list[i].playbackRate -= 0.1;
     }
-    numb.innerHTML = list[0].playbackRate.toFixed(1);
+    numb.textContent = list[0].playbackRate.toFixed(1);
     toogle = true;
   }
 
