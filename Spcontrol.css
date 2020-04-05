@@ -1,0 +1,14 @@
+.numbtext{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: black;
+	color: white;
+	font-size: 17px;
+	z-index: 9999;
+	font-family: Roboto, Arial, sans-serif;
+	border-radius: 0px 0px 3px 0px;
+	margin: 0px;
+	padding: 2px;
+	user-select: none;
+}
