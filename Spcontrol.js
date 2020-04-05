@@ -2,7 +2,9 @@ var toogle = true;
 var Speed = 1.0;
 
 function compareUrl(urlCur , urlLi) {
+  console.log(urlLi)
   for (var i = 0; i < urlLi.length; i++) {
+    if (urlLi[i] == ""){console.log("passed"); continue;}
     if (urlCur.search(urlLi[i]) >= 0){return false;}
   }
   return true;
@@ -13,9 +15,12 @@ function onError(error) {
   console.log(`Error: ${error}`);
 }
 function onGot(item) {
-
+  let slist = "youtube.com\nnetflix.com";
+  if (item.sitelist) {
+    slist = item.sitelist;
+  }
   site = window.location.href;
-  var allsite = item.sitelist.split('\n');
+  var allsite = slist.split('\n');
   
   if (compareUrl(site,allsite)) {
     setTimeout(loadVid, 2000,false);
@@ -23,6 +28,7 @@ function onGot(item) {
     loadVid(true);
   }
 }
+
 let getting = browser.storage.sync.get("sitelist");
 getting.then(onGot, onError);
 

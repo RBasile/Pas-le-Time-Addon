@@ -1,12 +1,12 @@
 {
   "homepage_url": "https://rbwork.fr",
   "manifest_version": 2,
-  "name": "Speed Control",
-  "version": "0.9",
+  "name": "Pas le Time",
+  "version": "1.0",
 
   "description": "Simple and lightweight Video Speed Controler",
 
-  "browser_specific_settings": {"gecko": {"id": "control.speed@rbwork.fr"}},
+  "browser_specific_settings": {"gecko": {"id": "pas.le.time@rbwork.fr"}},
 
   "icons": {
     "48": "icons/default48.png"
@@ -27,7 +27,7 @@
 
   "applications": {
     "gecko": {
-      "id": "control.qsd@rbwork.fr"
+      "id": "pas.le.time@rbwork.fr"
     }
   }
 }

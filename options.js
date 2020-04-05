@@ -1,14 +1,19 @@
 function saveOptions(e) {
   e.preventDefault();
+  let value = document.querySelector("#sitelist").value
+  console.log(value)
+  if (value == false) {
+    value = "\n"
+  }
   browser.storage.sync.set({
-    sitelist: document.querySelector("#sitelist").value
+    sitelist: value
   });
 }
 
 function restoreOptions() {
 
   function setCurrentChoice(result) {
-    document.querySelector("#sitelist").value = result.sitelist || "/watch";
+    document.querySelector("#sitelist").value = result.sitelist || "youtube.com\nnetflix.com";
   }
 
   function onError(error) {
