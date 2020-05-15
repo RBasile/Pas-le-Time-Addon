@@ -2,7 +2,7 @@ var toogle = true;
 var Speed = 1.0;
 
 function compareUrl(urlCur , urlLi) {
-  console.log(urlLi)
+  //console.log(urlLi)
   for (var i = 0; i < urlLi.length; i++) {
     if (urlLi[i] == ""){console.log("passed"); continue;}
     if (urlCur.search(urlLi[i]) >= 0){return false;}
@@ -28,6 +28,16 @@ function onGot(item) {
     loadVid(true);
   }
 }
+var state = 0.3
+function onGotState(item) {
+  let numb = document.getElementById('numbtextId')
+  if (item.widState) {
+    state = item.widState;
+  }
+}
+
+let gettingWid = browser.storage.sync.get("widState");
+gettingWid.then(onGotState, onError);
 
 let getting = browser.storage.sync.get("sitelist");
 getting.then(onGot, onError);
@@ -40,8 +50,8 @@ function loadVid(urlTrue) {
       numb.textContent = Speed;
       numb.className = "numbtext";
       numb.id = "numbtextId";
-      numb.style.opacity = 0.3;
       numb.addEventListener("click", activ);
+      numb.style.opacity = state;
       document.body.appendChild(numb);
     }
     document.addEventListener("keypress", changeSp);
@@ -52,12 +62,14 @@ function activ() {
   let numb = document.getElementById('numbtextId')
   if (numb.style.opacity==0.3){
     numb.style.opacity = .01;
+    browser.storage.sync.set({ widState: 0.01});
     document.removeEventListener("keypress", changeSp);
   }else{
     numb.style.opacity = .3;
+    browser.storage.sync.set({ widState: 0.3});
     document.addEventListener("keypress", changeSp);
   }
-  console.log("click");
+  //console.log("click");
 }
 
 
