@@ -10,7 +10,13 @@ function compareUrl(urlCur , urlLi) {
   return true;
 }
 
-
+var state = 0.3
+function onGotState(item) {
+  let numb = document.getElementById('numbtextId')
+  if (item.widState) {
+    state = item.widState;
+  }
+}
 function onError(error) {
   console.log(`Error: ${error}`);
 }
@@ -28,13 +34,6 @@ function onGot(item) {
     loadVid(true);
   }
 }
-var state = 0.3
-function onGotState(item) {
-  let numb = document.getElementById('numbtextId')
-  if (item.widState) {
-    state = item.widState;
-  }
-}
 
 let gettingWid = browser.storage.sync.get("widState");
 gettingWid.then(onGotState, onError);
@@ -50,11 +49,12 @@ function loadVid(urlTrue) {
       numb.textContent = Speed;
       numb.className = "numbtext";
       numb.id = "numbtextId";
-      numb.addEventListener("click", activ);
       numb.style.opacity = state;
+      numb.addEventListener("click", activ);
       document.body.appendChild(numb);
     }
-    document.addEventListener("keypress", changeSp);
+    if (state == 0.3){
+    document.addEventListener("keypress", changeSp);}
   }
 }
 
